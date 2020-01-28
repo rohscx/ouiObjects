@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const clipboardy = require("clipboardy");
+const {writeFile} = require("nodeutilz") ;
 
 (async function () {
 
@@ -22,5 +22,6 @@ const clipboardy = require("clipboardy");
               return n;
         },[])//?
     const asString = JSON.stringify(ouiData);
-    clipboardy.writeSync(asString)
+    const filePath = './vendorOuiList.json';
+    writeFile(filePath,asString,'utf8').then(console.log).catch(console.error)
 })()
